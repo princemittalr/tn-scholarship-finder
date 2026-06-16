@@ -2,7 +2,7 @@ import streamlit as st
 from groq import Groq
 import os
 
-api_key = os.environ.get("GROQ_API_KEY", "ENTER GROQ_API_KEY")
+api_key = os.environ.get("GROQ_API_KEY", "ENTER YOUR GROQ_API_KEY")
 client = Groq(api_key=api_key)
 
 SCHOLARSHIP_DATA = """
@@ -176,30 +176,80 @@ lang_instruction = {
     "हिंदी (Hindi)": "Please respond in Hindi language only."
 }
 
-# Language-specific instructions + example buttons
-examples = {
+# UI labels per language
+ui_labels = {
     "English": {
-        "instruction": "Tell me: your category (SC/ST/OBC/BC/MBC/General), gender, family income, % marks in last exam, and whether you are first in family to study engineering.",
-        "example_label": "📝 Click example to auto-fill",
-        "example_text": "I am BC male, family income ₹1.5 lakh per year, scored 72% in last exam, first in family to study engineering."
+        "category": "Your Category",
+        "gender": "Gender",
+        "income": "Family Annual Income (₹ in lakhs, e.g. 1.5)",
+        "marks": "Marks in Last Exam (%)",
+        "firstgen": "Are you first in family to study engineering?",
+        "disability": "Do you have a disability (40%+)?",
+        "hostel": "Do you stay in hostel?",
+        "btn": "🔍 Find My Scholarships",
+        "yes": "Yes", "no": "No",
+        "male": "Male", "female": "Female",
+        "categories": ["SC", "ST", "OBC", "BC", "MBC", "DNC", "General", "Minority"],
     },
     "தமிழ் (Tamil)": {
-        "instruction": "உங்கள் விவரங்களை ஆங்கிலத்தில் தட்டச்சு செய்யுங்கள்: சாதி வகை (SC/ST/OBC/BC/MBC/General), பாலினம், குடும்ப வருமானம், கடைசி தேர்வு மதிப்பெண் %, குடும்பத்தில் முதல் பொறியியல் மாணவரா என்று தெரிவிக்கவும்.",
-        "example_label": "📝 எடுத்துக்காட்டை கிளிக் செய்யுங்கள் (ஆங்கிலத்தில் தானாக நிரப்பும்)",
-        "example_text": "I am BC male, family income ₹1.5 lakh per year, scored 72% in last exam, first in family to study engineering."
+        "category": "உங்கள் சாதி வகை",
+        "gender": "பாலினம்",
+        "income": "குடும்ப ஆண்டு வருமானம் (₹ லட்சத்தில், எ.கா. 1.5)",
+        "marks": "கடைசி தேர்வு மதிப்பெண் (%)",
+        "firstgen": "குடும்பத்தில் முதல் பொறியியல் மாணவரா?",
+        "disability": "உங்களுக்கு மாற்றுத்திறன் உள்ளதா (40%+)?",
+        "hostel": "நீங்கள் விடுதியில் தங்குகிறீர்களா?",
+        "btn": "🔍 என் உதவித்தொகைகளை கண்டுபிடி",
+        "yes": "ஆம்", "no": "இல்லை",
+        "male": "ஆண்", "female": "பெண்",
+        "categories": ["SC", "ST", "OBC", "BC", "MBC", "DNC", "General", "Minority"],
     },
     "हिंदी (Hindi)": {
-        "instruction": "अपनी जानकारी अंग्रेज़ी में टाइप करें: जाति वर्ग (SC/ST/OBC/BC/MBC/General), लिंग, परिवार की आय, पिछली परीक्षा में % अंक, और क्या आप परिवार में इंजीनियरिंग पढ़ने वाले पहले हैं।",
-        "example_label": "📝 उदाहरण क्लिक करें (अंग्रेज़ी में अपने आप भर जाएगा)",
-        "example_text": "I am BC male, family income ₹1.5 lakh per year, scored 72% in last exam, first in family to study engineering."
+        "category": "आपकी जाति श्रेणी",
+        "gender": "लिंग",
+        "income": "परिवार की वार्षिक आय (₹ लाख में, जैसे 1.5)",
+        "marks": "पिछली परीक्षा में अंक (%)",
+        "firstgen": "क्या आप परिवार में इंजीनियरिंग पढ़ने वाले पहले हैं?",
+        "disability": "क्या आपको विकलांगता है (40%+)?",
+        "hostel": "क्या आप हॉस्टल में रहते हैं?",
+        "btn": "🔍 मेरी छात्रवृत्ति खोजें",
+        "yes": "हाँ", "no": "नहीं",
+        "male": "पुरुष", "female": "महिला",
+        "categories": ["SC", "ST", "OBC", "BC", "MBC", "DNC", "General", "Minority"],
     }
 }
 
-current = examples[language]
-st.info(current["instruction"])
+lb = ui_labels[language]
 
-if st.button(current["example_label"]):
-    st.session_state["prefill"] = current["example_text"]
+col1, col2 = st.columns(2)
+with col1:
+    category = st.selectbox(lb["category"], lb["categories"])
+    gender = st.radio(lb["gender"], [lb["male"], lb["female"]], horizontal=True)
+    firstgen = st.radio(lb["firstgen"], [lb["yes"], lb["no"]], horizontal=True)
+with col2:
+    income = st.number_input(lb["income"], min_value=0.0, max_value=50.0, value=1.5, step=0.1)
+    marks = st.number_input(lb["marks"], min_value=0, max_value=100, value=60)
+    disability = st.radio(lb["disability"], [lb["yes"], lb["no"]], horizontal=True)
+    hostel = st.radio(lb["hostel"], [lb["yes"], lb["no"]], horizontal=True)
+
+find_clicked = st.button(lb["btn"], type="primary")
+
+if find_clicked:
+    # Build English query from dropdowns
+    gender_en = "female" if gender == lb["female"] else "male"
+    firstgen_en = "yes, first in family to study engineering" if firstgen == lb["yes"] else "no"
+    disability_en = "yes, 40%+ disability" if disability == lb["yes"] else "no"
+    hostel_en = "yes" if hostel == lb["yes"] else "no"
+    
+    auto_query = (
+        f"I am {category} {gender_en}, family income ₹{income} lakh per year, "
+        f"scored {marks}% in last exam, first generation: {firstgen_en}, "
+        f"disability: {disability_en}, hostel: {hostel_en}. "
+        f"Find all scholarships I qualify for."
+    )
+    st.session_state["prefill"] = auto_query
+    st.rerun()
+
 # Deadline alert
 st.warning("⏰ **Upcoming:** AICTE & NSP scholarships open around October–November 2026. Prepare documents now!")
 
@@ -211,7 +261,7 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 prefill_value = st.session_state.pop("prefill", "")
-user_input = st.chat_input("Example: I am BC male, income ₹1.5 lakh, scored 72%...") or prefill_value
+user_input = prefill_value if prefill_value else st.chat_input("Example: I am BC male, income ₹1.5 lakh, scored 72%...")
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
