@@ -176,8 +176,30 @@ lang_instruction = {
     "हिंदी (Hindi)": "Please respond in Hindi language only."
 }
 
-st.info("Tell me: your category (SC/ST/OBC/BC/MBC/General), gender, family income, % marks in last exam, and whether you are first in family to study engineering.")
+# Language-specific instructions + example buttons
+examples = {
+    "English": {
+        "instruction": "Tell me: your category (SC/ST/OBC/BC/MBC/General), gender, family income, % marks in last exam, and whether you are first in family to study engineering.",
+        "example_label": "📝 Click example to auto-fill",
+        "example_text": "I am BC male, family income ₹1.5 lakh per year, scored 72% in last exam, first in family to study engineering."
+    },
+    "தமிழ் (Tamil)": {
+        "instruction": "உங்கள் விவரங்களை ஆங்கிலத்தில் தட்டச்சு செய்யுங்கள்: சாதி வகை (SC/ST/OBC/BC/MBC/General), பாலினம், குடும்ப வருமானம், கடைசி தேர்வு மதிப்பெண் %, குடும்பத்தில் முதல் பொறியியல் மாணவரா என்று தெரிவிக்கவும்.",
+        "example_label": "📝 எடுத்துக்காட்டை கிளிக் செய்யுங்கள் (ஆங்கிலத்தில் தானாக நிரப்பும்)",
+        "example_text": "I am BC male, family income ₹1.5 lakh per year, scored 72% in last exam, first in family to study engineering."
+    },
+    "हिंदी (Hindi)": {
+        "instruction": "अपनी जानकारी अंग्रेज़ी में टाइप करें: जाति वर्ग (SC/ST/OBC/BC/MBC/General), लिंग, परिवार की आय, पिछली परीक्षा में % अंक, और क्या आप परिवार में इंजीनियरिंग पढ़ने वाले पहले हैं।",
+        "example_label": "📝 उदाहरण क्लिक करें (अंग्रेज़ी में अपने आप भर जाएगा)",
+        "example_text": "I am BC male, family income ₹1.5 lakh per year, scored 72% in last exam, first in family to study engineering."
+    }
+}
 
+current = examples[language]
+st.info(current["instruction"])
+
+if st.button(current["example_label"]):
+    st.session_state["prefill"] = current["example_text"]
 # Deadline alert
 st.warning("⏰ **Upcoming:** AICTE & NSP scholarships open around October–November 2026. Prepare documents now!")
 
@@ -188,8 +210,8 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
-user_input = st.chat_input("Example: I am BC male, income ₹1.5 lakh, scored 72%...")
-
+prefill_value = st.session_state.pop("prefill", "")
+user_input = st.chat_input("Example: I am BC male, income ₹1.5 lakh, scored 72%...") or prefill_value
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
