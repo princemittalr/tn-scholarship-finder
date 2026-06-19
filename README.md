@@ -1,147 +1,127 @@
-<div align="center">
-
 # 🎓 TN Engineering Scholarship Finder
 
-### AI-powered scholarship discovery for Tamil Nadu engineering students
+<div align="center">
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://tn-scholarship-finder.streamlit.app/)
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-LLaMA%203.3-F54703?style=flat)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat)
-![Status](https://img.shields.io/badge/Status-Live-brightgreen?style=flat)
-![Languages](https://img.shields.io/badge/Languages-English%20%7C%20Tamil%20%7C%20Hindi-blue?style=flat)
+**AI-powered scholarship discovery for Tamil Nadu engineering students**
 
-**[🚀 Try Live App](https://tn-scholarship-finder.streamlit.app/)** · **[Report Bug](https://github.com/princemittalr/tn-scholarship-finder/issues)** · **[Request Feature](https://github.com/princemittalr/tn-scholarship-finder/issues)**
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Streamlit-FF4B4B?style=for-the-badge)](https://tn-scholarship-finder.streamlit.app)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Groq](https://img.shields.io/badge/Groq-LLaMA_3.3_70B-F55036?style=for-the-badge)](https://groq.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 </div>
 
 ---
 
-## 🔍 The Problem
+## 🔥 The Problem
 
-Every year, thousands of Tamil Nadu engineering students **miss out on scholarships they actually qualify for.**
+Over **1.2 million engineering students** study in Tamil Nadu — one of India's largest technical education hubs.
 
-- Government scholarship info is buried in long PDFs and multiple portals
-- First-generation students have no parent or mentor to guide them
-- Information exists in English only — inaccessible to many rural students
-- Students don't know what documents to prepare until it's too late
+Most of them qualify for **multiple government scholarships** worth ₹50,000–₹2 lakh per year.
 
-**The result:** Eligible students lose lakhs of rupees in scholarship money — simply because they didn't know it existed.
+**Most never apply. Not because they're ineligible — because they don't know these scholarships exist.**
 
----
+The information is buried across 6+ government portals in bureaucratic language. First-generation students from low-income families — the ones who need this money most — have no one to guide them.
 
-## ✅ The Solution
-
-A free, multilingual AI chatbot that:
-
-- Asks for your category, income, marks, and gender
-- Instantly shows **every scholarship you qualify for**
-- Gives you the **exact documents** you need to apply
-- Works in **English, Tamil, and Hindi** — zero English required
-- Highlights **urgent deadlines** so you never miss an application
-
-> *"Just tell me your details — I'll find the money."*
+> **This tool changes that.**
 
 ---
 
-## 🌟 Features
+## ✨ What It Does
+
+A student fills a simple form (2 minutes) — category, gender, income, marks — and instantly gets:
+
+- ✅ Every scholarship they qualify for, ranked by urgency
+- ⏰ Live deadline countdown for each scholarship
+- 📋 Personalized document checklist (only what they actually need)
+- 📝 AI-generated application letter, ready to submit
+- 📥 PDF report they can take to their college counselor
+- 💬 Chat in English, Tamil, or Hindi for follow-up questions
+
+---
+
+## 🎯 Key Features
 
 | Feature | Description |
 |---|---|
-| 🤖 AI-Powered Matching | Analyzes your profile and finds all eligible scholarships |
-| 🌐 Multilingual | Full support for English, Tamil (தமிழ்), and Hindi (हिंदी) |
-| 📋 Document Checklist | Auto-generates combined document list for all eligible schemes |
-| ⏰ Deadline Alerts | Highlights scholarships closing soon |
-| 📱 Mobile Friendly | Works on any device, no installation needed |
-| 🆓 Completely Free | No login, no payment, no ads — ever |
+| **Smart Eligibility Filter** | Python pre-filters 19 scholarships before AI — faster, more accurate |
+| **Match Scoring** | Each scholarship scored 0–99% based on student's need profile |
+| **Urgency Detection** | 🔴 Critical (< 60 days) · 🟡 Moderate · 🟢 Plenty of time |
+| **Application Letter Generator** | Streaming AI generates personalized formal letter in seconds |
+| **PDF Report Export** | Full scholarship report with profile + matches + documents |
+| **3-Language Support** | English · தமிழ் · हिंदी — full UI and AI responses |
+| **Verified Data** | 19 scholarships across Central Gov, TN State, and Private/CSR sources |
+| **Conversational AI** | Chat with AI about any scholarship — streaming responses |
 
 ---
 
-## 📊 Scholarship Coverage
+## 🏛️ Scholarships Covered
 
-### Central Government (via scholarships.gov.in)
-- AICTE Pragati Scholarship (Girl Students) — up to ₹50,000/year
-- AICTE Saksham Scholarship (Specially Abled) — ₹50,000/year
-- AICTE Swanath Scholarship (Orphan/COVID-affected) — ₹50,000/year
-- NSP Post-Matric — SC / ST / OBC / Minority students
+| Source | Examples | Count |
+|---|---|---|
+| Central Government | AICTE Pragati, Saksham, Swanath · NSP SC/ST/OBC/Minority | 7 |
+| Tamil Nadu State | BC/MBC/DNC Free Education · SC/ST Post-Matric · First Generation | 9 |
+| Private / CSR | IDFC FIRST Bank · NHFDC · NSP Top Class | 3 |
 
-### Tamil Nadu Government
-- TN Free Education Scholarship BC/MBC/DNC — up to ₹2 lakh/year
-- TN Post-Matric Scholarship SC / ST / BC/MBC/DNC
-- TN First Generation Graduate Scholarship
-- TN Adi Dravidar & Tribal Welfare Scholarships
-- TN Scholarship for Differently Abled Students
-- TN HESS Scholarship for ST students
-
-### Private & Foundation
-- IDFC FIRST Bank Scholarship — up to ₹1 lakh/year
-- NHFDC Scholarship for Disabled Students
-- NSP Top Class Education (IIT/NIT/IIIT students)
-
-> **19 verified scholarships** · Data verified June 2026 · Always verify deadlines at official portals
-
----
-
-## 🚀 How It Works
-
-```mermaid
-flowchart LR
-    A[Student enters\nprofile details] --> B[AI analyzes\neligibility]
-    B --> C[Matches against\n19 verified schemes]
-    C --> D[Shows eligible\nscholarships]
-    D --> E[Document checklist\ngenerated]
-    E --> F[Student applies\nwith confidence]
-```
-
----
-
-## 🖥️ Run Locally
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/princemittalr/tn-scholarship-finder.git
-cd tn-scholarship-finder
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Set your Groq API key (free at console.groq.com)
-export GROQ_API_KEY="your_key_here"
-
-# 4. Run the app
-streamlit run app.py
-```
+**Total potential value per student: ₹50,000 – ₹2,00,000/year**
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | Streamlit |
-| AI Model | LLaMA 3.3 70B via Groq API |
-| Language | Python 3.10+ |
-| Hosting | Streamlit Cloud (Free) |
-| Data | Manually verified from official government portals |
+```
+Frontend      →  Streamlit
+AI Engine     →  Groq API (LLaMA 3.3 70B) — streaming responses
+PDF Export    →  ReportLab
+Language      →  Python 3.10+
+Deployment    →  Streamlit Community Cloud
+```
 
 ---
 
-## 🎯 Who Is This For?
+## 🏗️ Architecture
 
-- 🎓 Engineering students in Tamil Nadu (any year)
-- 👨‍👩‍👧 First-generation college students with no guidance
-- 🌾 Rural students who need information in Tamil or Hindi
-- 📚 Students who applied to one scholarship but missed others they qualify for
+```
+Student fills profile form
+        │
+        ▼
+Python eligibility pre-filter
+(hard rules: income, marks, category, gender)
+        │
+        ▼
+Match scoring algorithm (0–99%)
+        │
+        ▼
+Ranked scholarship cards with urgency countdown
+        │
+        ├──► Application Letter Generator (Claude/Groq streaming)
+        ├──► Personalized document checklist
+        ├──► PDF report export
+        └──► Multilingual chat interface
+```
+
+**Why pre-filter before AI?**
+Sending all 19 scholarships to the LLM on every query is slow and error-prone. Python filters first — AI only explains and generates. This makes the system faster, cheaper, and more accurate.
 
 ---
 
-## 🌍 Social Impact
+## 🚀 Run Locally
 
-This tool was built specifically for **first-generation engineering students** — students whose parents never went to college and have no one to guide them through the scholarship process.
+```bash
+# Clone
+git clone https://github.com/princemittalr/tn-scholarship-finder.git
+cd tn-scholarship-finder
 
-In India, eligible students lose crores in scholarship money annually — not because they don't qualify, but because **they don't know the money exists.**
+# Install
+pip install streamlit groq reportlab
 
-This tool changes that.
+# Set API key
+export GROQ_API_KEY="your_groq_api_key"   # Get free at console.groq.com
+
+# Run
+streamlit run app.py
+```
 
 ---
 
@@ -149,32 +129,46 @@ This tool changes that.
 
 ```
 tn-scholarship-finder/
-├── app.py              # Main Streamlit application
-├── requirements.txt    # Python dependencies
-└── README.md           # This file
+├── app.py              # Main application
+├── requirements.txt    # Dependencies
+└── README.md
 ```
 
 ---
 
-## 🤝 Contributing
+## 💡 Design Decisions
 
-Contributions are welcome. If you know of a scholarship not listed here:
+**Why Groq instead of OpenAI?**
+100% free tier. This tool is built for students with zero financial access — the infrastructure should match that mission.
 
-1. Fork the repository
-2. Add the scholarship details in `app.py` under `SCHOLARSHIP_DATA`
-3. Include: name, eligibility, amount, deadline, website, documents needed
-4. Submit a pull request
+**Why Streamlit?**
+Fastest path from idea to deployed web app. Students can access it on any device, no installation needed.
 
-Please verify all data from **official government websites only.**
+**Why hard-code scholarship data instead of a database?**
+For a tool serving students in low-connectivity rural areas, reliability matters more than scalability. A structured Python dict is fast, transparent, and easily auditable by NGOs or government partners.
 
 ---
 
-## ⚠️ Disclaimer
+## 🗺️ Roadmap
 
-Scholarship data is verified as of **June 2026**. Deadlines and eligibility criteria change annually. Always verify at official websites before applying:
-- [scholarships.gov.in](https://scholarships.gov.in)
-- [bcmbcmw.tn.gov.in](https://bcmbcmw.tn.gov.in)
-- [dte.tn.gov.in](https://dte.tn.gov.in)
+- [ ] WhatsApp Bot integration (field workers can query via WhatsApp)
+- [ ] College-specific filtering (AICTE-approved TN colleges)
+- [ ] Application status tracker
+- [ ] SMS deadline reminders
+- [ ] Expansion to other Indian states
+
+---
+
+## 🌍 Impact
+
+This tool directly serves students from:
+- SC / ST / OBC / BC / MBC / DNC communities
+- Family income below ₹2.5 lakh/year
+- First-generation engineering students
+- Students with disabilities
+- COVID-bereaved families
+
+These are students for whom ₹50,000 is the difference between continuing education and dropping out.
 
 ---
 
@@ -190,14 +184,14 @@ B.Tech CSE (AI/ML) · Dayananda Sagar University
 
 ## 📄 License
 
-MIT License — free to use, modify, and distribute.
+MIT License — free to use, modify, and deploy for educational and social impact purposes.
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for students who deserve better access to education funding.**
+**Data verified June 2026 · Always verify deadlines at official government websites**
 
-⭐ Star this repo if it helped you find a scholarship!
+*Built with the belief that access to education funding should not depend on who you know.*
 
 </div>
